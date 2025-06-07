@@ -1,7 +1,7 @@
 const express = require('express');
 
 function createCRUDRoutes(Model) {
-   
+
    const router = express.Router();
    router.get('/', async (req, res) => {
       try {
@@ -22,7 +22,15 @@ function createCRUDRoutes(Model) {
       }
    });
 
-   //post, put...
+   router.post('/', async (req, res) => {
+      try {
+         const newItem = await Model.create(req.body);
+         res.status(201).json(newItem)
+      } catch (err) {
+         res.status(400).json({ error: 'Failed to create item' });
+      }
+   });
+   
    return router
 }
 
