@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const PORT = 3000;
-const sequelize = require('./database');
+const sequelize = require('./db');
 
 const Product = require('./models/Product')
 const User = require('./models/User')
